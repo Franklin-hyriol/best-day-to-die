@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+    --color-primary: #FF00A8;
+    --color-background-light: #1E1E2A;
+    --color-background-dark: #1E1E2A;
+    --color-container-dark: #4A2E5B;
+    --color-accent: #A8FF00;
+    --color-text-main: #F0F0F0;
+    --color-text-secondary: #b0b0c0;
+
+    --font-family-display: "Space Grotesk", sans-serif;
+    --font-family-comic: "Bangers", cursive;
+
+    --border-radius-DEFAULT: 1rem;
+    --border-radius-lg: 1.5rem;
+    --border-radius-xl: 3rem;
+    --border-radius-full: 9999px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@utility font-bangers {
+    font-family: var(--font-family-comic);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@utility clip-path-custom {
+    clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%,
+            100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+    .speech-bubble {
+        position: relative;
+        background: var(--color-container-dark);
+        /* Correction ici */
+        border-radius: var(--border-radius-lg);
+    }
+
+    .speech-bubble::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: var(--color-container-dark);
+        /* Correction ici */
+        border-bottom: 0;
+        margin-left: -20px;
+        margin-bottom: -20px;
+    }
 }
