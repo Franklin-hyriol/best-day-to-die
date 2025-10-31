@@ -36,7 +36,7 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${bangers.variable} font-display bg-background-dark text-text-main antialiased`}
       >
-        <main className="relative h-auto min-h-screen w-full overflow-x-hidden p-4 md:p-6">
+        <main className="relative h-auto min-h-screen w-full overflow-x-hidden p-4 md:p-6 flex flex-col items-center gap-10">
           <LanguageToggle />
           {children}
         </main>
