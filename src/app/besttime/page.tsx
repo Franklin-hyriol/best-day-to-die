@@ -6,7 +6,7 @@ function BestTime() {
       <Header title="Ton meilleur jour pour mourir !" />
 
       <div className="max-w-xl text-center">
-        <h2 className="text-9xl md:text-7xl font-bold drop-shadow-[0_4px_0_rgba(255,0,168,0.8)]">
+        <h2 className="text-6xl md:text-7xl font-bold drop-shadow-[0_4px_0_rgba(255,0,168,0.8)]">
           13 Juin 2077
         </h2>
 
