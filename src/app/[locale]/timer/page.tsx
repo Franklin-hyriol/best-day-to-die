@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePredictionStore } from "@/store/predictionStore";
 import Header from "@/components/Header/Header";
+import { useTranslations } from "next-intl";
 
 interface TimeLeft {
   years?: number;
@@ -33,6 +34,8 @@ function calculateTimeLeft(targetDate: string): TimeLeft {
 }
 
 function Timer() {
+  const t = useTranslations('TimerPage');
+  const tError = useTranslations('Error');
   const { date, clearPrediction } = usePredictionStore();
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({});
   const [isClient, setIsClient] = useState(false);
@@ -62,27 +65,27 @@ function Timer() {
   };
 
   if (!isClient) {
-    return null; // Avoid server-side rendering of the timer
+    return null;
   }
 
   if (!date) {
     return (
       <div className="text-center">
-        <p className="text-2xl mb-4">Aucune date de décès à chronométrer.</p>
+        <p className="text-2xl mb-4">{tError('noDate')}</p>
         <Link href="/" className="text-accent hover:underline">
-          Retourner au formulaire pour commencer.
+          {tError('startOver')}
         </Link>
       </div>
     );
   }
 
-  const timeEntries = Object.entries(timeLeft).filter(([, value]) => value !== undefined);
+  const timeEntries = Object.entries(timeLeft).filter(([, value]) => value !== undefined && value >= 0);
 
   return (
     <>
       <Header
         className="text-primary drop-shadow-[0_4px_0_rgba(168,255,0,0.6)]"
-        title="⏳ Le grand jour approche..."
+        title={t('title')}
       />
 
       <div className="bg-red-800 border-4 border-yellow-300 rounded-3xl p-4 shadow-2xl shadow-red-900/50 max-w-lg">
@@ -115,17 +118,17 @@ function Timer() {
         </span>
         <div className="thought-bubble">
           <p className="text-text-secondary italic text-lg">
-            "Encore un peu de patience, l'éternité vous attend."
+            {t('thoughtBubble')}
           </p>
         </div>
       </div>
 
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
         <button className="arcade-button bg-accent border-green-800 text-background-dark shadow-lg shadow-accent/20">
-          Partager le verdict
+          {t('shareButton')}
         </button>
         <Link href="/" onClick={handleRestart} className="arcade-button bg-primary border-pink-900 text-white shadow-lg shadow-primary/20">
-          Recommencer
+          {t('restartButton')}
         </Link>
       </div>
     </>

@@ -1,0 +1,36 @@
+{
+  "PredictionForm": {
+    "title": "Découvre ton meilleur jour pour mourir 💀",
+    "nameLabel": "Quel est ton nom, futur fantôme ?",
+    "namePlaceholder": "Ex: Casper",
+    "dateLabel": "Quand es-tu né(e) ? (Le début de la fin)",
+    "genderLabel": "Choisis ton genre :",
+    "submitButton": "Let's Get This Over With! 💀",
+    "loadingButton": "La voyante consulte..."
+  },
+  "BestTimePage": {
+    "title": "Ton meilleur jour pour mourir !",
+    "subtitle": "Relax, Humour Noir:",
+    "tickTockButton": "Tick-Tock!",
+    "restartButton": "Recommencer!",
+    "tooltips": {
+      "ready": "Genre, on est prêts pour ça ?",
+      "resigned": "C'est ça, la résignation est belle.",
+      "agenda": "Double-check ton agenda, on ne voudrait pas d'un conflit.",
+      "deal": "L'encre est sèche, pas de retour possible !",
+      "train": "Le train est en marche, champion."
+    }
+  },
+  "TimerPage": {
+    "title": "⏳ Le grand jour approche...",
+    "thoughtBubble": "Encore un peu de patience, l'éternité vous attend.",
+    "shareButton": "Partager le verdict",
+    "restartButton": "Recommencer"
+  },
+  "Error": {
+    "noPrediction": "Aucune prédiction trouvée.",
+    "backToForm": "Retourner au formulaire pour en créer une.",
+    "noDate": "Aucune date de décès à chronométrer.",
+    "startOver": "Retourner au formulaire pour commencer."
+  }
+}

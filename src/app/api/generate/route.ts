@@ -4,9 +4,9 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
     try {
-        const { birthday, gender } = await req.json() as { birthday: string; gender: "male" | "female" };
+        const { birthday, gender, locale } = await req.json() as { birthday: string; gender: "male" | "female"; locale: string };
 
-        if (!birthday || !gender) {
+        if (!birthday || !gender || !locale) {
             return NextResponse.json({ error: "Missing parameters" }, { status: 400 });
         }
 
@@ -22,6 +22,7 @@ export async function POST(req: Request) {
                 Tu es une IA à l'humour noir, très sarcastique.
                 La "meilleure date pour mourir" d'une personne était le ${deathDate}, une date DÉJÀ PASSÉE.
                 Ta tâche est de te moquer de la personne parce qu'elle est toujours en vie en 2 à 3 phrases percutantes.
+                Réponds en ${locale === 'fr' ? 'français' : 'anglais'}.
 
                 IMPORTANT : Inspire-toi des exemples de ton suivants, mais sois créatif et ne les répète pas mot pour mot.
                 - "Mais qu'est-ce que tu fais encore ici ? Tu devrais être six pieds sous terre à l'heure qu'il est."
@@ -37,6 +38,7 @@ export async function POST(req: Request) {
         } else {
             prompt = `
                 Tu es une IA sarcastique, avec un humour noir et un ton très familier.
+                Réponds en ${locale === 'fr' ? 'français' : 'anglais'}.
                 La "meilleure date pour mourir" d'une personne est le ${deathDate}.
                 Ta tâche est de générer une explication courte (2-3 phrases), drôle et percutante pour cette date.
 

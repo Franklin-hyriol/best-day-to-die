@@ -1,0 +1,36 @@
+{
+  "PredictionForm": {
+    "title": "Find your best day to die 💀",
+    "nameLabel": "What's your name, future ghost?",
+    "namePlaceholder": "e.g., Casper",
+    "dateLabel": "When were you born? (The beginning of the end)",
+    "genderLabel": "Pick your gender:",
+    "submitButton": "Let's Get This Over With! 💀",
+    "loadingButton": "The seer is consulting..."
+  },
+  "BestTimePage": {
+    "title": "Your best day to die!",
+    "subtitle": "Relax, Dark Humor:",
+    "tickTockButton": "Tick-Tock!",
+    "restartButton": "Restart!",
+    "tooltips": {
+      "ready": "Like, are we ready for this?",
+      "resigned": "That's it, resignation is beautiful.",
+      "agenda": "Double-check your agenda, we wouldn't want a conflict.",
+      "deal": "The ink is dry, no turning back!",
+      "train": "The train is moving, champ."
+    }
+  },
+  "TimerPage": {
+    "title": "⏳ The big day is approaching...",
+    "thoughtBubble": "Just a little more patience, eternity is waiting for you.",
+    "shareButton": "Share the verdict",
+    "restartButton": "Restart"
+  },
+  "Error": {
+    "noPrediction": "No prediction found.",
+    "backToForm": "Go back to the form to create one.",
+    "noDate": "No death date to time.",
+    "startOver": "Go back to the form to start."
+  }
+}
