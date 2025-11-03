@@ -1,6 +1,83 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePredictionStore } from "@/store/predictionStore";
 import Header from "@/components/Header/Header";
 
+interface TimeLeft {
+  years?: number;
+  months?: number;
+  days?: number;
+  hours?: number;
+  minutes?: number;
+  seconds?: number;
+}
+
+function calculateTimeLeft(targetDate: string): TimeLeft {
+  const difference = +new Date(targetDate) - +new Date();
+  let timeLeft: TimeLeft = {};
+
+  if (difference > 0) {
+    timeLeft = {
+      years: Math.floor(difference / (1000 * 60 * 60 * 24 * 365)),
+      months: Math.floor((difference / (1000 * 60 * 60 * 24 * 30.44)) % 12),
+      days: Math.floor((difference / (1000 * 60 * 60 * 24)) % 30.44),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+  }
+
+  return timeLeft;
+}
+
 function Timer() {
+  const { date, clearPrediction } = usePredictionStore();
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({});
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    if (!date) return;
+
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft(date));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [date]);
+
+  const handleRestart = () => {
+    clearPrediction();
+  };
+
+  const unitLabels: { [key: string]: { singular: string; plural: string } } = {
+    years: { singular: 'an', plural: 'ans' },
+    months: { singular: 'mois', plural: 'mois' },
+    days: { singular: 'jour', plural: 'jours' },
+    hours: { singular: 'heure', plural: 'heures' },
+    minutes: { singular: 'minute', plural: 'minutes' },
+    seconds: { singular: 'seconde', plural: 'secondes' },
+  };
+
+  if (!isClient) {
+    return null; // Avoid server-side rendering of the timer
+  }
+
+  if (!date) {
+    return (
+      <div className="text-center">
+        <p className="text-2xl mb-4">Aucune date de décès à chronométrer.</p>
+        <Link href="/" className="text-accent hover:underline">
+          Retourner au formulaire pour commencer.
+        </Link>
+      </div>
+    );
+  }
+
+  const timeEntries = Object.entries(timeLeft).filter(([, value]) => value !== undefined);
+
   return (
     <>
       <Header
@@ -8,56 +85,24 @@ function Timer() {
         title="⏳ Le grand jour approche..."
       />
 
-      <div className="bg-red-800 border-4 border-yellow-300 rounded-3xl p-4 shadow-2xl shadow-red-900/50 max-w-xl">
+      <div className="bg-red-800 border-4 border-yellow-300 rounded-3xl p-4 shadow-2xl shadow-red-900/50 max-w-lg">
         <div className="bg-black/80 rounded-xl px-4 py-6 flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-4 border-2 border-red-900/50">
-          <div className="flex items-baseline">
-            <span className="font-bangers text-5xl sm:text-7xl text-red-500 text-shadow-custom">
-              92
-            </span>
-            <span className="font-bangers text-2xl sm:text-3xl text-red-400 ml-1">
-              ans,
-            </span>
-          </div>
-          <div className="flex items-baseline">
-            <span className="font-bangers text-5xl sm:text-7xl text-red-500 text-shadow-custom">
-              4
-            </span>
-            <span className="font-bangers text-2xl sm:text-3xl text-red-400 ml-1">
-              mois,
-            </span>
-          </div>
-          <div className="flex items-baseline">
-            <span className="font-bangers text-5xl sm:text-7xl text-red-500 text-shadow-custom">
-              12
-            </span>
-            <span className="font-bangers text-2xl sm:text-3xl text-red-400 ml-1">
-              jours,
-            </span>
-          </div>
-          <div className="flex items-baseline mt-2">
-            <span className="font-bangers text-5xl sm:text-7xl text-red-500 text-shadow-custom">
-              6
-            </span>
-            <span className="font-bangers text-2xl sm:text-3xl text-red-400 ml-1">
-              heures,
-            </span>
-          </div>
-          <div className="flex items-baseline mt-2">
-            <span className="font-bangers text-5xl sm:text-7xl text-red-500 text-shadow-custom">
-              44
-            </span>
-            <span className="font-bangers text-2xl sm:text-3xl text-red-400 ml-1">
-              minutes et
-            </span>
-          </div>
-          <div className="flex items-baseline mt-2">
-            <span className="font-bangers text-5xl sm:text-7xl text-red-500 text-shadow-custom">
-              30
-            </span>
-            <span className="font-bangers text-2xl sm:text-3xl text-red-400 ml-1">
-              secondes
-            </span>
-          </div>
+          {timeEntries.map(([unit, value], index) => {
+            const label = value! > 1 ? unitLabels[unit].plural : unitLabels[unit].singular;
+            const isLast = index === timeEntries.length - 1;
+            const isSecondToLast = index === timeEntries.length - 2;
+
+            return (
+              <div className="flex items-baseline mt-2" key={unit}>
+                <span className="font-bangers text-5xl sm:text-7xl text-red-500 text-shadow-custom">
+                  {value}
+                </span>
+                <span className="font-bangers text-2xl sm:text-3xl text-red-400 ml-1">
+                  {label}{isSecondToLast ? ' et' : isLast ? '' : ','}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -79,9 +124,9 @@ function Timer() {
         <button className="arcade-button bg-accent border-green-800 text-background-dark shadow-lg shadow-accent/20">
           Partager le verdict
         </button>
-        <button className="arcade-button bg-primary border-pink-900 text-white shadow-lg shadow-primary/20">
+        <Link href="/" onClick={handleRestart} className="arcade-button bg-primary border-pink-900 text-white shadow-lg shadow-primary/20">
           Recommencer
-        </button>
+        </Link>
       </div>
     </>
   );
