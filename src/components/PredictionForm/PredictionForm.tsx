@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { usePredictionStore } from "@/store/predictionStore";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const PredictionFormSchema = z.object({
   birthday: z
@@ -145,10 +146,19 @@ export function PredictionForm() {
 
       <button
         type="submit"
-        className="cursor-pointer font-bangers text-2xl md:text-3xl bg-primary text-[#1E1E2A] font-bold px-10 py-4 tracking-wide clip-path-custom border-4 border-accent shadow-[0_0_20px_var(--color-primary)] transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95"
-        disabled={isLoading}
+        className={cn(
+          "cursor-pointer font-bangers text-2xl md:text-3xl bg-primary text-[#1E1E2A] font-bold px-10 py-4 tracking-wide clip-path-custom border-4 border-accent shadow-[0_0_20px_var(--color-primary)] transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95",
+          { "disabled": isLoading }
+        )}
       >
-        {isLoading ? "Calculating..." : "Let's Get This Over With! 💀"}
+        {isLoading ? (
+          <>
+            <span className="crystal-ball-loader"></span>
+            La voyante consulte...
+          </>
+        ) : (
+          "Let's Get This Over With! 💀"
+        )}
       </button>
     </form>
   );
