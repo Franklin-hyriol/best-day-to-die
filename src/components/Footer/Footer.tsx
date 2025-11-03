@@ -1,6 +1,10 @@
-import React from "react";
+"use client";
+
+import { useTranslations } from "next-intl";
 
 function Footer() {
+  const t = useTranslations('Footer');
+
   return (
     <footer className="w-full max-w-md">
       <div className="relative">
@@ -12,7 +16,7 @@ function Footer() {
         </div>
         <div className="bg-container-dark/70 border-2 border-dashed border-accent/50 rounded-full p-4 min-h-[72px]">
           <p className="text-text-secondary italic text-center">
-            "Don't rush, I have all of eternity."
+            "{t('quote')}"
           </p>
         </div>
       </div>

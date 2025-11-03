@@ -5,23 +5,30 @@ import { Datepicker } from "flowbite-react";
 import z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { usePredictionStore } from "@/store/predictionStore";
-import { useRouter } from "next/navigation";
+import { usePredictionStore } from "@/store/predictionStore"; // Corrected import
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
+import { useRouter } from "@/i18n/navigation";
 
-const PredictionFormSchema = z.object({
-  birthday: z
-    .date({ message: "La date de naissance est requise" })
-    .min(new Date(1900, 0, 1), { message: "La date de naissance est invalide" })
-    .max(new Date(), { message: "La date de naissance est dans le futur" }),
-  gender: z.enum(["male", "female"], { message: "Le genre est requis" }),
-});
+// Define the type separately
+type IPredictionForm = z.infer<ReturnType<typeof getPredictionFormSchema>>;
 
-type IPredictionForm = z.infer<typeof PredictionFormSchema>;
+// Function to get schema, to infer type outside component
+const getPredictionFormSchema = (t: (key: string) => string) =>
+  z.object({
+    birthday: z
+      .date({ message: t("birthday_required") })
+      .min(new Date(1900, 0, 1), { message: t("birthday_invalid") })
+      .max(new Date(), { message: t("birthday_future") }),
+    gender: z.enum(["male", "female"], { message: t("gender_required") }),
+  });
 
 export function PredictionForm({ locale }: { locale: string }) {
   const t = useTranslations("PredictionForm");
+  const tZod = useTranslations("ZodErrors");
+
+  // Get the schema inside the component
+  const PredictionFormSchema = getPredictionFormSchema(tZod);
 
   const defaultValues: IPredictionForm = {
     birthday: new Date(),
@@ -63,7 +70,7 @@ export function PredictionForm({ locale }: { locale: string }) {
         body: JSON.stringify({
           birthday: data.birthday.toISOString().split("T")[0],
           gender: data.gender,
-          locale: locale, // Send locale to API
+          locale: locale,
         }),
       });
 
@@ -73,7 +80,7 @@ export function PredictionForm({ locale }: { locale: string }) {
 
       const result = await response.json();
       setPrediction(result.date, result.texte);
-      router.push("/besttime");
+      router.push("/besttime", { locale: locale });
     } catch (error) {
       console.error("Error submitting form:", error);
     } finally {

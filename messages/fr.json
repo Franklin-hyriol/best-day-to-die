@@ -1,36 +1,43 @@
 {
   "PredictionForm": {
     "title": "Découvre ton meilleur jour pour mourir 💀",
-    "nameLabel": "Quel est ton nom, futur fantôme ?",
-    "namePlaceholder": "Ex: Casper",
-    "dateLabel": "Quand es-tu né(e) ? (Le début de la fin)",
-    "genderLabel": "Choisis ton genre :",
-    "submitButton": "Let's Get This Over With! 💀",
-    "loadingButton": "La voyante consulte..."
+    "dateLabel": "Ta date de fabrication ? 😏",
+    "genderLabel": "Ton genre ? (La faucheuse veut pas se tromper)",
+    "submitButton": "Découvrir mon destin 💀",
+    "loadingButton": "Prédiction en cours… 🔮"
   },
   "BestTimePage": {
     "title": "Ton meilleur jour pour mourir !",
-    "subtitle": "Relax, Humour Noir:",
-    "tickTockButton": "Tick-Tock!",
-    "restartButton": "Recommencer!",
+    "subtitle": "Le verdict est là… tu le valides ?",
+    "tickTockButton": "Tic-tac ⏰",
+    "restartButton": "Recommencer 🔄",
     "tooltips": {
-      "ready": "Genre, on est prêts pour ça ?",
-      "resigned": "C'est ça, la résignation est belle.",
-      "agenda": "Double-check ton agenda, on ne voudrait pas d'un conflit.",
-      "deal": "L'encre est sèche, pas de retour possible !",
-      "train": "Le train est en marche, champion."
+      "ready": "Tu sembles étrangement prêt pour ça.",
+      "resigned": "Accepter son sort, c’est déjà un art.",
+      "agenda": "Vérifie ton agenda, la Mort déteste les imprévus.",
+      "deal": "Le pacte est scellé. Aucun remboursement possible.",
+      "train": "Le train du destin est à quai… billet composté."
     }
   },
   "TimerPage": {
     "title": "⏳ Le grand jour approche...",
-    "thoughtBubble": "Encore un peu de patience, l'éternité vous attend.",
-    "shareButton": "Partager le verdict",
-    "restartButton": "Recommencer"
+    "thoughtBubble": "Chaque seconde compte… ou pas, selon ton optimisme.",
+    "shareButton": "Partager ton funeste destin 💌",
+    "restartButton": "Recommencer (et défier le destin)"
   },
   "Error": {
-    "noPrediction": "Aucune prédiction trouvée.",
-    "backToForm": "Retourner au formulaire pour en créer une.",
-    "noDate": "Aucune date de décès à chronométrer.",
-    "startOver": "Retourner au formulaire pour commencer."
+    "noPrediction": "Aucune prédiction trouvée. Même la Mort t’a zappé.",
+    "backToForm": "Retourner au formulaire (avant qu’elle change d’avis)",
+    "noDate": "Aucune date trouvée. Serais-tu immortel ? 👀",
+    "startOver": "Retourner au début de la prophétie 🔮"
+  },
+  "Footer": {
+    "quote": "Ne vous pressez pas… la Mort, elle, n’est jamais en retard."
+  },
+  "ZodErrors": {
+    "birthday_required": "La date de naissance est requise (la faucheuse aime les détails).",
+    "birthday_invalid": "Date invalide. Même la Mort n’y comprend rien.",
+    "birthday_future": "Tu viens du futur ? La Mort adore les paradoxes.",
+    "gender_required": "Le genre est requis (même les spectres ont des préférences)."
   }
 }

@@ -1,8 +1,6 @@
 {
   "PredictionForm": {
     "title": "Find your best day to die 💀",
-    "nameLabel": "What's your name, future ghost?",
-    "namePlaceholder": "e.g., Casper",
     "dateLabel": "When were you born? (The beginning of the end)",
     "genderLabel": "Pick your gender:",
     "submitButton": "Let's Get This Over With! 💀",
@@ -32,5 +30,14 @@
     "backToForm": "Go back to the form to create one.",
     "noDate": "No death date to time.",
     "startOver": "Go back to the form to start."
+  },
+  "Footer": {
+    "quote": "Don't rush, I have all of eternity."
+  },
+  "ZodErrors": {
+    "birthday_required": "Date of birth is required",
+    "birthday_invalid": "Date of birth is invalid",
+    "birthday_future": "Date of birth cannot be in the future",
+    "gender_required": "Gender is required"
   }
 }

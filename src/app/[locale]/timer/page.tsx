@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { usePredictionStore } from "@/store/predictionStore";
 import Header from "@/components/Header/Header";
 import { useTranslations } from "next-intl";
