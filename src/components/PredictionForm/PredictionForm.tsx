@@ -7,6 +7,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 
+import { usePredictionStore } from "@/store/predictionStore";
+import { useRouter } from "next/navigation";
+
 const PredictionFormSchema = z.object({
   birthday: z
     .date({ message: "La date de naissance est requise" })
@@ -38,13 +41,14 @@ export function PredictionForm() {
   });
 
   const [selectedDate, setSelectedDate] = useState<Date>(defaultValues.birthday);
+  const [isLoading, setIsLoading] = useState(false);
+  const setPrediction = usePredictionStore((state) => state.setPrediction);
+  const router = useRouter();
 
   const handleDateChange = (date: Date) => {
     setSelectedDate(date);
     setValue("birthday", date, { shouldValidate: true });
   };
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (data: IPredictionForm) => {
     setIsLoading(true);
@@ -65,7 +69,11 @@ export function PredictionForm() {
       }
 
       const result = await response.json();
-      console.log("AI Response:", result);
+      
+      // Save result to store and navigate
+      setPrediction(result.date, result.texte);
+      router.push("/besttime");
+
     } catch (error) {
       console.error("Error submitting form:", error);
     } finally {
