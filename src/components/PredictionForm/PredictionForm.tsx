@@ -44,8 +44,33 @@ export function PredictionForm() {
     setValue("birthday", date, { shouldValidate: true });
   };
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const onSubmit = async (data: IPredictionForm) => {
-    console.log("Form data:", data);
+    setIsLoading(true);
+    try {
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          birthday: data.birthday.toISOString().split('T')[0], // Format YYYY-MM-DD
+          gender: data.gender,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log("AI Response:", result);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -66,7 +91,11 @@ export function PredictionForm() {
           id="birthday"
           value={selectedDate}
           onChange={(date) => handleDateChange(date as Date)}
-          minDate={new Date(1920, 0, 1)}
+          minDate={(() => {
+            const d = new Date();
+            d.setFullYear(d.getFullYear() - 100);
+            return d;
+          })()}
           maxDate={new Date()}
         />
 
@@ -109,8 +138,9 @@ export function PredictionForm() {
       <button
         type="submit"
         className="cursor-pointer font-bangers text-2xl md:text-3xl bg-primary text-[#1E1E2A] font-bold px-10 py-4 tracking-wide clip-path-custom border-4 border-accent shadow-[0_0_20px_var(--color-primary)] transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95"
+        disabled={isLoading}
       >
-        Let's Get This Over With! 💀
+        {isLoading ? "Calculating..." : "Let's Get This Over With! 💀"}
       </button>
     </form>
   );
