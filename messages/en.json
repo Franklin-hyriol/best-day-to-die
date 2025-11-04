@@ -1,0 +1,49 @@
+{
+  "PredictionForm": {
+    "title": "Discover Your Best Day to Die 💀",
+    "dateLabel": "Your date of manufacture? 😏",
+    "genderLabel": "Your gender? (The Reaper hates mistakes)",
+    "submitButton": "Reveal My Fate 💀",
+    "loadingButton": "Reading your destiny… 🔮"
+  },
+  "BestTimePage": {
+    "title": "Your Best Day to Die!",
+    "subtitle": "The verdict is in… do you agree?",
+    "tickTockButton": "Tick-tock ⏰",
+    "restartButton": "Another date? 🔮",
+    "tooltips": {
+      "ready": "You look suspiciously ready for this.",
+      "resigned": "Accepting your fate is an art form.",
+      "agenda": "Check your schedule — Death hates surprises.",
+      "deal": "The deal is sealed. No refunds.",
+      "train": "The train of fate is boarding… ticket stamped."
+    }
+  },
+  "TimerPage": {
+    "title": "⏳ The Big Day Is Coming...",
+    "thoughtBubble": "Every second counts… or not, depending on your optimism.",
+    "shareButton": "Share your grim destiny 💌",
+    "restartButton": "See the verdict again 🔮"
+  },
+  "Error": {
+    "noPrediction": "No prediction found. Even Death ghosted you.",
+    "backToForm": "Back to the form (before she changes her mind)",
+    "noDate": "No date found. Are you immortal? 👀",
+    "startOver": "Back to the beginning of the prophecy 🔮"
+  },
+  "Footer": {
+    "quote": "No rush… Death is never late."
+  },
+  "ZodErrors": {
+    "birthday_required": "Birthdate required (the Reaper loves details).",
+    "birthday_invalid": "Invalid date. Even Death can’t make sense of it.",
+    "birthday_future": "From the future, huh? Death loves a paradox.",
+    "gender_required": "Gender is required."
+  },
+  "NotFoundPage": {
+    "title": "Dead Page 💀",
+    "headline": "RIP... this page didn’t survive destiny.",
+    "description": "It was probably reaped by time itself. You can still return from the afterlife (to the homepage).",
+    "backButton": "Back to the living 👻"
+  }
+}

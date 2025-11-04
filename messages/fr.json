@@ -1,0 +1,49 @@
+{
+  "PredictionForm": {
+    "title": "Découvre ton meilleur jour pour mourir 💀",
+    "dateLabel": "Ta date de fabrication ? 😏",
+    "genderLabel": "Ton genre ? (La faucheuse veut pas se tromper)",
+    "submitButton": "Découvrir mon destin 💀",
+    "loadingButton": "Prédiction en cours… 🔮"
+  },
+  "BestTimePage": {
+    "title": "Ton meilleur jour pour mourir !",
+    "subtitle": "Le verdict est là… tu le valides ?",
+    "tickTockButton": "Tic-tac ⏰",
+    "restartButton": "Une autre date ? 🔮",
+    "tooltips": {
+      "ready": "Tu sembles étrangement prêt pour ça.",
+      "resigned": "Accepter son sort, c’est déjà un art.",
+      "agenda": "Vérifie ton agenda, la Mort déteste les imprévus.",
+      "deal": "Le pacte est scellé. Aucun remboursement possible.",
+      "train": "Le train du destin est à quai… billet composté."
+    }
+  },
+  "TimerPage": {
+    "title": "⏳ Le grand jour approche...",
+    "thoughtBubble": "Chaque seconde compte… ou pas, selon ton optimisme.",
+    "shareButton": "Partager ton funeste destin 💌",
+    "restartButton": "Revoir le verdict 🔮"
+  },
+  "Error": {
+    "noPrediction": "Aucune prédiction trouvée. Même la Mort t’a zappé.",
+    "backToForm": "Retourner au formulaire (avant qu’elle change d’avis)",
+    "noDate": "Aucune date trouvée. Serais-tu immortel ? 👀",
+    "startOver": "Retourner au début de la prophétie 🔮"
+  },
+  "Footer": {
+    "quote": "Ne vous pressez pas… la Mort, elle, n’est jamais en retard."
+  },
+  "ZodErrors": {
+    "birthday_required": "La date de naissance est requise (la faucheuse aime les détails).",
+    "birthday_invalid": "Date invalide. Même la Mort n’y comprend rien.",
+    "birthday_future": "Tu viens du futur ? La Mort adore les paradoxes.",
+    "gender_required": "Le genre est requis"
+  },
+  "NotFoundPage": {
+    "title": "Page décédée 💀",
+    "headline": "RIP... cette page n’a pas survécu au destin.",
+    "description": "Elle a probablement été fauchée par le temps. Tu peux toujours revenir d’entre les morts (vers l’accueil).",
+    "backButton": "Retour à la vie 👻"
+  }
+}
