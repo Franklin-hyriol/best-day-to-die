@@ -10,7 +10,7 @@
     "title": "Ton meilleur jour pour mourir !",
     "subtitle": "Le verdict est là… tu le valides ?",
     "tickTockButton": "Tic-tac ⏰",
-    "restartButton": "Recommencer 🔄",
+    "restartButton": "Une autre date ? 🔮",
     "tooltips": {
       "ready": "Tu sembles étrangement prêt pour ça.",
       "resigned": "Accepter son sort, c’est déjà un art.",
@@ -23,7 +23,7 @@
     "title": "⏳ Le grand jour approche...",
     "thoughtBubble": "Chaque seconde compte… ou pas, selon ton optimisme.",
     "shareButton": "Partager ton funeste destin 💌",
-    "restartButton": "Recommencer (et défier le destin)"
+    "restartButton": "Revoir le verdict 🔮"
   },
   "Error": {
     "noPrediction": "Aucune prédiction trouvée. Même la Mort t’a zappé.",
@@ -38,6 +38,12 @@
     "birthday_required": "La date de naissance est requise (la faucheuse aime les détails).",
     "birthday_invalid": "Date invalide. Même la Mort n’y comprend rien.",
     "birthday_future": "Tu viens du futur ? La Mort adore les paradoxes.",
-    "gender_required": "Le genre est requis (même les spectres ont des préférences)."
+    "gender_required": "Le genre est requis"
+  },
+  "NotFoundPage": {
+    "title": "Page décédée 💀",
+    "headline": "RIP... cette page n’a pas survécu au destin.",
+    "description": "Elle a probablement été fauchée par le temps. Tu peux toujours revenir d’entre les morts (vers l’accueil).",
+    "backButton": "Retour à la vie 👻"
   }
 }

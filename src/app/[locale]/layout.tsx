@@ -29,11 +29,23 @@ export function generateStaticParams() {
 
 type Params = Promise<{ locale: string }>;
 
+import { notFound } from "next/navigation";
+
+// ... (other imports)
+
 export default async function RootLayout({
   children,
   params,
-}: { children: React.ReactNode; params: Params }) {
+}: {
+  children: React.ReactNode;
+  params: Params;
+}) {
   const { locale } = await params;
+
+  if (!["fr", "en"].includes(locale)) {
+    notFound();
+  }
+
   setRequestLocale(locale);
   const messages = await getMessages();
 

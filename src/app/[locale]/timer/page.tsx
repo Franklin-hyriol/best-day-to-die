@@ -127,7 +127,7 @@ function Timer() {
         <button className="arcade-button bg-accent border-green-800 text-background-dark shadow-lg shadow-accent/20">
           {t('shareButton')}
         </button>
-        <Link href="/" onClick={handleRestart} className="arcade-button bg-primary border-pink-900 text-white shadow-lg shadow-primary/20">
+        <Link href="/besttime" onClick={handleRestart} className="arcade-button bg-primary border-pink-900 text-white shadow-lg shadow-primary/20">
           {t('restartButton')}
         </Link>
       </div>
